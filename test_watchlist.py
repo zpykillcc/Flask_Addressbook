@@ -1,6 +1,8 @@
 import unittest
 
-from app import app, db, Movie, User, forge, initdb
+from watchlist import app, db
+from watchlist.models import Movie, User
+from watchlist.commands import forge, initdb
 
 
 class WatchlistTestCase(unittest.TestCase):
@@ -12,8 +14,9 @@ class WatchlistTestCase(unittest.TestCase):
             SQLALCHEMY_DATABASE_URI='sqlite:///:memory:'
         )
         # 创建数据库和表
-        ctx = app.app_context()
-        ctx.push()
+
+        #ctx = app.app_context()
+        #ctx.push()
         db.create_all()
         # 创建测试数据，一个用户，一个电影条目
         user = User(name='Test', username='test')
