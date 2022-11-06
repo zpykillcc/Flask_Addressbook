@@ -33,7 +33,7 @@ def forge():
         {'title': 'The Pork of Music', 'year': '2012'},
     ]
 
-    user = User(name=name)
+    user = User(username=name)
     db.session.add(user)
     for m in movies:
         movie = Movie(title=m['title'], year=m['year'])
@@ -57,7 +57,7 @@ def admin(username, password):
         user.set_password(password)
     else:
         click.echo('Creating user...')
-        user = User(username=username, name='Admin')
+        user = User(username=username)
         user.set_password(password)
         db.session.add(user)
 

@@ -4,7 +4,7 @@
     {% block head %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ user.name }}'s Watchlist</title>
+    <title>个人通信录</title>
     <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
     {% endblock %}
@@ -13,24 +13,31 @@
     {% for message in get_flashed_messages() %}
     <div class="alert">{{ message }}</div>
     {% endfor %}
-    <h2>
-        <img alt="Vio" class="vio" src="{{ url_for('static', filename='images/vio.png') }}">
-        {{ user.name }}'s Watchlist
+    <h2 class="txl">
+        {% if current_user.is_authenticated %}
+        <img alt="Vio" class="vio" src="{{ url_for('static', filename='users/'+user.image_hash ) }}">
+        {{ user.username }} 的通讯录
+        {% else %}
+        <img alt="Vio" class="vio" src="{{ url_for('static', filename='users/default.png' ) }}">
+        通讯录
+        {% endif %}
     </h2>
     <nav>
         <ul>
-            <li><a href="{{ url_for('index') }}">Home</a></li>
+            <li><a href="{{ url_for('index') }}">主页</a></li>
             {% if current_user.is_authenticated %}
-                <li><a href="{{ url_for('settings') }}">Settings</a></li>
-                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                <li><a href="{{ url_for('settings') }}">设置</a></li>
+                <li><a href="{{ url_for('logout') }}">退出</a></li>
+                <li><a href="{{ url_for('password') }}">密码</a></li>
             {% else %}
-            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('login') }}">登陆</a></li>
+            <li><a href="{{ url_for('register') }}">注册</a></li>
             {% endif %}
         </ul>
     </nav>
     {% block content %}{% endblock %}
     <footer>
-        <small>&copy; 2018 <a href="http://helloflask.com/book/3">HelloFlask</a></small>
+        <small>&copy; 2022 <a href="https://github.com/zpykillccdog/Flask_Addressbook">Flask_Addressbook</a></small>
     </footer>
 </body>
 </html>

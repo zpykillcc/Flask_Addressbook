@@ -9,7 +9,8 @@ body {
 /* 页脚 */
 footer {
     color: #888;
-    margin-top: 15px;
+    position: relative;
+    margin-bottom: 100px;
     text-align: center;
     padding: 10px;
 }
@@ -17,10 +18,12 @@ footer {
 
 nav ul {
     list-style-type: none;
+    border-radius: 25px;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-image: url("backlist.png");
+    box-shadow: 10px 10px 5px grey;
 }
 
 nav li {
@@ -42,7 +45,7 @@ nav li a:hover {
 
 /* 头像 */
 .vio {
-    width: 40px;
+    width: 60px;
 }
 
 /* 电影列表 */
@@ -56,6 +59,7 @@ nav li a:hover {
 .movie-list li {
     padding: 12px 24px;
     border-bottom: 1px solid #ddd;
+    background-image: url("backlist.jpg")
 }
 
 .movie-list li:last-child {
@@ -96,7 +100,7 @@ input[type=text] {
     border: 1px solid #ddd;
 }
 
-input[name=year] {
+input[name=sex] {
     width: 50px;
 }
 
@@ -131,4 +135,8 @@ input[name=year] {
 
 .inline-form {
     display: inline;
+}
+
+.txl{
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
 }
