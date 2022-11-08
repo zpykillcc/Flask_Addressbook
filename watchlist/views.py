@@ -117,9 +117,11 @@ def settings():
         if not name or len(name) > 20:
             flash('Invalid input.')
             return redirect(url_for('settings'))
-
-        user = User.query.filter_by(username=current_user.username).first()
-        user.username = name
+        user = User.query.filter_by(username=name).first()
+        if user:
+            flash('该用户已存在.')
+            return redirect(url_for('settings')) 
+        current_user.username = name
         db.session.commit()
         flash('设置更改成功.')
         return redirect(url_for('index'))
